@@ -1,0 +1,101 @@
+<!DOCTYPE html >
+
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="Description" content="Chat room simulation">
+<meta name="keywords" content="HTML, JAVASCRIPT, CSS, Chatroom">
+<meta name="author" content="Rajkiran">
+<title>Rajkiran's Chat Room simulation</title>
+<style type="text/css">
+	input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+div[id^="format_div_"]
+{
+}
+p[id^="p1"]
+{
+    display: inline-block;
+    text-align: left;
+        width: 27%;
+    margin-bottom: 1px;
+    margin-top: 1px;
+    border-bottom: 2px;
+}
+p[id^="p2"]
+{
+    display: inline-block;
+    width: 46%;
+    border-bottom: 2px;
+    margin-bottom: 1px;
+    margin-top: 1px;
+    text-align: left;
+}
+p[id^="p3"]
+{
+    display: inline-block;
+        width: 27%;
+    text-align: right;
+        margin-bottom: 1px;
+           border-bottom: 2px;
+    margin-top: 1px;
+}
+</style>
+</head>
+
+<body>
+<h1> Rajkiran's ChatRoom </h1>	
+<p>
+	<div id="usernameDivision">
+	<form id="username">
+	<input id="nickname" placeholder="Please enter the username" type="text" name="nickname" required />
+	<input type="submit" name="submit" value="submit">		
+	</form>
+	</div>
+
+	<div id="messageDivision">
+	
+	<form id="messageform">
+		<input type="text" name="message" id="message" required \>
+		<input type="submit" name="post" value="post">
+	</form>
+	
+	</div>
+</p>
+</body>
+
+
+<script type="text/javascript" src="./js/socket.io-client.min.js"></script>
+<script type="text/javascript" src="./js/client.js"></script>
+
+</html>
