@@ -1,28 +1,21 @@
 var user = {};
-
-
 var clientSocket = io("http://localhost:3000/");
-
 clientSocket.on("disconnect", function(){
-	setTitle("Disconnected");
+    setTitle("Disconnected");
 });
- 
- clientSocket.on("connect", function(){
- 	clientSocket.emit(console.log("something"));
- });
-
- clientSocket.on("message", function(message){
- 	communicationMessage(message);
- });
-
+clientSocket.on("connect", function(){
+    clientSocket.emit(console.log("something"));
+});
+clientSocket.on("message", function(message){
+    communicationMessage(message);
+});
 clientSocket.on("chat", function( message ){
-	printMessage(message);
+    printMessage(message);
 });
-
 window.onload = function () {
-//initially only display the username panel
-var messageDivision = document.getElementById("messageDivision");
-messageDivision.style.display = "none";
+    //initially only display the username panel
+    var messageDivision = document.getElementById("messageDivision");
+    messageDivision.style.display = "none";
 
 //once username is entered, hide the username form and only show the message form
 var usernameForm = document.getElementById("username");
@@ -42,17 +35,18 @@ clientSocket.on("getdataFromDB", function( items ) {
 });
 
 var messageForm = document.getElementById("messageform");
+var chatMessage = document.getElementById( "message");
+chatMessage.focus();
+
 messageForm.onsubmit = function(event) {
 	event.preventDefault();
 	var message = {};
-	var chatMessage = document.getElementById( "message");
 	message['message'] = chatMessage.value;
 	message['username'] =  user;
 	message['timestamp'] = Date();
 	printMessage(message);
 	clientSocket.emit("chat", message);
 	chatMessage.value = '';
-	chatMessage.focus();
 	return false;
 }
 
@@ -79,9 +73,9 @@ function printMessage(message) {
 	p1.innerText = message['username'] + ':';
 	var p2 = document.createElement('p');
 	p2.setAttribute("id","p2" + printMessage.counter);
-	p2.innerText = message['message'];
+	p2.innerText = message['timestamp'];
 	var p3 = document.createElement('p');
-	p3.innerText = message['timestamp'];
+	p3.innerText = message['message'];
 	p3.setAttribute("id","p3" + printMessage.counter);
 
 	div.appendChild(p1);
